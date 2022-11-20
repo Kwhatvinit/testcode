@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %} 
+     
+      <div class="container"div>
+        <h2>Add a Todos</h2>
+        <form action="/" method="POST">
+          <div class="mb-3">
+             <label for="title" class="form-label">Todo Title</label>
+             <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+            
+           </div>
+             <label for="Desc" class="form-label">Todo description</label>
+             <input type="text" class="form-control" name="desc" id="Desc">
+           </div>
+           <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+      </div>
+         
+         
+          
+      <div class="container my-3">
+        <h2>Your Todos</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">SNo</th>
+              <th scope="col">Title</th>
+              <th scope="col">description</th>
+              <th scope="col">Time</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%if allTodo|length==0%}
+          </div>
+          <div class="alert alert-dark" role="alert">
+            welcome to the your todos and entered our first todos!
+          </div>
+              {% else %} 
+                
+            {% for todo in allTodo %}
+              
+                 
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{todo.title}}</td>
+              <td>{{todo.desc}}</td>
+              <td>{{todo.date_created}}</td>
+              <td>
+                <a href="/Update/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">update</button>
+                 <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">delete</button>
+                </td>
+            </tr>
+          
+            {%endfor%}
+            {%endif %}
+
+          </table>
+        </div>
+          </tbody>
+      </div>
+       
+      
+    {% endblock body %}
+ 

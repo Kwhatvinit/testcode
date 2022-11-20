@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %} 
+     
+      <div class="container"div>
+        <h2>Update Todo</h2>
+        <form action="/Update/{{todo.sno}}" method="POST">
+          <div class="mb-3">
+             <label for="title" class="form-label">Todo Title</label>
+             <input type="text" class="form-control" name="title" id="title" value="{{todo.title}}" aria-describedby="emailHelp">
+            
+           </div>
+             <label for="Desc" class="form-label">Todo description</label>
+             <input type="text" class="form-control" value="{{todo.desc}}" name="desc" id="Desc">
+           </div>
+           <button type="submit" class="btn btn-dark">Update</button>
+        </form>
+      </div>
+         
+         
+          
+            {%if allTodo|length==0%}
+          </div>
+          <div class="alert alert-dark" role="alert">
+            welcome to the your todos and entered our updated totods todos!
+          </div>
+              {% else %} 
+                
+            {% for todo in allTodo %}
+              
+                 
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{todo.title}}</td>
+              <td>{{todo.desc}}</td>
+              <td>{{todo.date_created}}</td>
+              <td>
+                <a href="/Update/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">update</button>
+                 <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">delete</button>
+                </td>
+            </tr>
+          
+            {%endfor%}
+            {%endif %}
+
+          </table>
+        </div>
+          </tbody>
+      </div>
+       
+      
+    {% endblock body %}
+ 
